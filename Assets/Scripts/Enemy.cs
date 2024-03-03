@@ -3,10 +3,9 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
-    Transform target;
-
-    Health health;
     NavMeshAgent agent;
+    Transform target;
+    Health health;
 
     void Start()
     {

@@ -1,6 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Spawner : MonoBehaviour
 {
@@ -8,11 +8,15 @@ public class Spawner : MonoBehaviour
     public List<Transform> spawnPoints;
     public List<int> enemiesPerWave;
 
-    
-    [Range(0.1f,10f)]
+    [Range(0.1f, 10f)]
     public float spawnInterval = 1f;
+    [Range(0.1f, 10f)]
+    public float timeBetweenWaves = 5f;
+    public int enemiesToSpawn;
 
-    public int enemiestoSpawn;
+    public UnityEvent onWaveStart;
+    public UnityEvent onWaveEnd;
+    public UnityEvent onWavesCleared;
 
     void Spawn()
     {
@@ -24,16 +28,19 @@ public class Spawner : MonoBehaviour
     {
         foreach (var num in enemiesPerWave)
         {
-            enemiestoSpawn = num;
+            enemiesToSpawn = num;
+            onWaveStart.Invoke();
+
+            while (enemiesToSpawn > 0)
+            {
+                await new WaitForSeconds(spawnInterval);
+                Spawn();
+                enemiesToSpawn--;
+            }
+
+            onWaveEnd.Invoke();
+            await new WaitForSeconds(timeBetweenWaves);
         }
-        
-        
-        enemiestoSpawn = enemiesPerWave[0];
-        while (enemiestoSpawn > 0)
-        {
-            await new WaitForSeconds(spawnInterval); 
-            Spawn();
-            enemiestoSpawn--;
-        }
+        onWavesCleared.Invoke();
     }
 }

@@ -28,6 +28,7 @@ public class Weapon : MonoBehaviour
 
     public void Shoot()
     {
+        
         if(isReloading) return;
         if (clipAmmo <= 0)
         {
