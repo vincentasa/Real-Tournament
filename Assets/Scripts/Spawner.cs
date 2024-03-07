@@ -7,6 +7,7 @@ public class Spawner : MonoBehaviour
     public GameObject prefab;
     public List<Transform> spawnPoints;
     public List<int> enemiesPerWave;
+    public AudioSource winSource;
 
     [Range(0.1f, 10f)]
     public float spawnInterval = 1f;
@@ -39,6 +40,7 @@ public class Spawner : MonoBehaviour
             }
 
             onWaveEnd.Invoke();
+            winSource.Play();
             await new WaitForSeconds(timeBetweenWaves);
         }
         onWavesCleared.Invoke();

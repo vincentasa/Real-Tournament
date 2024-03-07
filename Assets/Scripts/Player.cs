@@ -8,8 +8,9 @@ public class Player : MonoBehaviour
     public GameObject grabText;
     public Transform hand;
     public HUD hud;
-
-    void Update()
+	public AudioSource source;
+	public AudioSource dmgsource;
+	void Update()
     {
 	    var cam = Camera.main.transform;
 
@@ -89,7 +90,8 @@ public class Player : MonoBehaviour
     {
          if (other.gameObject.CompareTag("Enemy"))
          {
-               health.Damage(20);
+			dmgsource.Play();
+			health.Damage(20);
          }
     }
 }

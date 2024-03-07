@@ -16,6 +16,9 @@ public class Weapon : MonoBehaviour
     public float reloadTime = 2;
     public float bulletsPerShot = 1;
     public float spreadAngle = 5;
+    public AudioSource source;
+    public AudioSource reloadSource;
+    bool isPlaying;
 
     public UnityEvent onRightClick;
     public UnityEvent onShoot;
@@ -28,10 +31,11 @@ public class Weapon : MonoBehaviour
 
     public void Shoot()
     {
-        
+        source.Play();
         if(isReloading) return;
         if (clipAmmo <= 0)
         {
+            isPlaying = false;
             Reload();
             return;
         }
@@ -56,6 +60,7 @@ public class Weapon : MonoBehaviour
 
         isReloading = true;
 
+        reloadSource.Play();
         print ("Reloading...");
         onReload.Invoke();
         await new WaitForSeconds(reloadTime);
