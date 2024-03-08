@@ -40,7 +40,7 @@ public class Spawner : MonoBehaviour
             }
 
             onWaveEnd.Invoke();
-            winSource.Play();
+            //winSource.Play();
             await new WaitForSeconds(timeBetweenWaves);
         }
         onWavesCleared.Invoke();
