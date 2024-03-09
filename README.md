@@ -1,3 +1,7 @@
-![image](https://github.com/ViktorKornilov/Real-Tournament/assets/39262485/545683cf-0f06-4b56-b747-12a21715ef76)
+Žaidimas skirtas tiems, kurie nieko nebijo (jk šitas žaidimas nebaisus)
 
-![image](https://github.com/ViktorKornilov/Real-Tournament/assets/39262485/7aeff394-bcb5-4791-8e56-4dc63c948407)
+Valdymas - WASD, paimti su E
+
+https://play.unity.com/mg/other/webgl-builds-395300
+
+![image](https://github.com/vincentasa/Real-Tournament/assets/84776791/6a3134d0-b0c5-4d70-afb4-aa064d3f1c11)
